@@ -1,5 +1,6 @@
 
 
+import io
 from flask import Flask, request, Response, send_file
 import jsonpickle
 import numpy as np
@@ -30,16 +31,23 @@ def test():
 
 
     # encode response using jsonpickle
+    #response_pickled = jsonpickle.encode(response)
 
     #_, img_encoded = cv2.imencode('.jpg', img)
     #print ( img_encoded)
 
     cv2.imwrite( 'new.jpeg', img)
 
+    _, img_encoded = cv2.imencode('.jpg', img)
+
+
+
+    #response = {'message': img_encoded.tostring()}
+    #response_pickled = jsonpickle.encode(response)
 
     #response_pickled = jsonpickle.encode(response)
     #return Response(response=response_pickled, status=200, mimetype="application/json")
-    return send_file( 'new.jpeg', mimetype="image/jpeg", attachment_filename="new.jpeg", as_attachment=True)
+    return send_file(io.BytesIO(img), attachment_filename='new.jpeg', mimetype='image/jpeg')
 
 # start flask app
 app.run(host="0.0.0.0", port=5000)
