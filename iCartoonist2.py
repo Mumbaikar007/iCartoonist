@@ -61,7 +61,7 @@ class Cartoonizer:
         return cv2.bitwise_and(img_color, img_edge)
 
 tmp_canvas = Cartoonizer()
-file_name = "lena.jpeg" #File_name will come here
+file_name = "abcd.jpg" #File_name will come here
 res = tmp_canvas.render(file_name)
 #cv2.imwrite("Cartoon version.jpg", res)
 cv2.imshow("Cartoon version", res)

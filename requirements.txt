@@ -1,0 +1,9 @@
+
+Flask
+gunicorn
+itsdangerous
+Jinja2
+jsonpickle
+MarkupSafe
+opencv-python
+Werkzeug
